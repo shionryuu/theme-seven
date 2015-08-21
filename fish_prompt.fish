@@ -41,6 +41,15 @@ end
 # Segments functions
 # ===========================
 
+function prompt_normal -d "Normal print"
+  if [ -z "$argv[1]" -o -z "$argv[2]" -o -z "$argv[3]" ]
+    return
+  end
+  set_color -b $argv[1]
+  set_color $argv[2]
+  echo -n $argv[3]
+end
+
 function prompt_segment -d "Function to draw a segment"
   set -l bg
   set -l fg
@@ -57,17 +66,16 @@ function prompt_segment -d "Function to draw a segment"
   if [ "$current_bg" != 'NONE' -a "$argv[1]" != "$current_bg" ]
     set_color -b $bg
     set_color $current_bg
-    echo -n "$segment_separator "
+    echo -n "$segment_separator"
     set_color -b $bg
     set_color $fg
   else
     set_color -b $bg
     set_color $fg
-    echo -n " "
   end
   set current_bg $argv[1]
   if [ -n "$argv[3]" ]
-    echo -n -s $argv[3] " "
+    echo -n -s " $argv[3] "
   end
 end
 
@@ -89,7 +97,8 @@ function prompt_user -d "Display actual user if different from $default_user"
   if [ "$theme_display_user" = "yes" ]
     if [ "$USER" != "$default_user" -o -n "$SSH_CLIENT" ]
       set USER_PROMPT (whoami)@(hostname)
-      prompt_segment black white "$__fish_git_prompt_char_icon $USER_PROMPT"
+      prompt_normal black blue " $__fish_git_prompt_char_icon"
+      prompt_segment black white "$USER_PROMPT"
     end
   end
 end

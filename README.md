@@ -1,8 +1,27 @@
 ## seven
 
-A ZSH theme
+An oh-my-fish theme based on agnoster
 
-![seven theme](https://raw.githubusercontent.com/shionryuu/theme-seven/master/screenshot.png)
+![seven theme](http://i.imgur.com/Ed5E6b5.png)
+
+### Requirements
+
+  - [Powerline fonts](https://github.com/powerline/fonts
+)
+  - [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
+
+### Usage
+
+  1. clone the source
+
+  ```fish
+  $ git clone https://github.com/ShionRyuu/theme-seven $fish_path/themes/seven
+  ```
+
+  2. change Theme in config.fish
+  ```fish
+  Theme 'seven'
+  ```
 
 ### Credits
 
@@ -12,4 +31,4 @@ A ZSH theme
 
 ### License
 
-  MIT
+  [`The MIT License (MIT)`](http://shionryuu.mit-license.org/)
